@@ -1,0 +1,16 @@
+<nav>
+  <div class="container">
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo"><i class="material-icons">whatshot</i></a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><%= link_to '<i class="material-icons">home</i>'.html_safe, root_path,
+                data: {position: "bottom", tooltip: "Home"}, :class => "tooltipped" %></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<ul class="sidenav" id="mobile-demo">
+  <li><%= link_to "Home", root_path %></li>
+</ul>
