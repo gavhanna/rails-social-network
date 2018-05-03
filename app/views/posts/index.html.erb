@@ -3,8 +3,8 @@
 <%= render 'posts/newPostButton' %>
 
 <div class="center-align">
-  
-      <% @posts.each do |post| %>
+  <h2>Posts Feed</h2>
+      <% @posts.reverse.each do |post| %>
       <% @user = User.find_by_id(post.user_id) %>
               <% @comCount = 0 %>
               <% @comments.each do |comment| %>
@@ -21,24 +21,28 @@
                 </div>
           </div>
           <div class="col s10 m10 left-align">
-            <div class="card blue-grey darken-1">
+            <div class="card blue-grey darken-1 post-card">
               <div class="card-content white-text">
                 <a href="/profile/<%= @user.id %>">
                   <span class="card-title"><%= @user.username || @user.email %></span>
                 </a>
                 <p><%= post.content %></p>
               </div>
-              <div class="card-action">
-                <p><%= time_ago_in_words(post.created_at) %> ago <br><%= @comCount %> comments</p>
-                <%= link_to 'Show', post %>
-                <% if current_user.id == post.user_id %>
-                  <%= link_to 'Edit', edit_post_path(post) %>
-                  <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-                <% end %>
+              <div class="card-action post-details">
+                <div class="left">
+                  <p><%= time_ago_in_words(post.created_at) %> ago <br><%= @comCount %> comments</p>
+                </div>
+                <div class="right">
+                  <%= link_to 'Show', post %>
+                  <% if current_user.id == post.user_id %>
+                    <%= link_to 'Edit', edit_post_path(post) %>
+                    <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <% end %>
+                </div>
               </div>
               
               
-              <ul class="collection" style="color: white;padding:5%">
+              <ul class="collection comments">
                 
                 <% @comments.each do |comment| %>
                   <% if comment.post_id == post.id %>
