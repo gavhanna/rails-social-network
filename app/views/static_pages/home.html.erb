@@ -1,2 +1,10 @@
-<h1>Home Page</h1>
-<h3>Dunno what this app is called yet.</h3>
+<div class="center">
+    <h1>Home Page</h1>
+    <h3>Dunno what this app is called yet.</h3>
+    <p>Seeing if I can build a relatively functional social network using Ruby on Rails.</p>
+    
+    <% if !user_signed_in? %>
+        <%= link_to 'Register', new_user_registration_path, :class => "btn" %>
+        <%= link_to 'Sign In', new_user_session_path, :class => "btn" %>
+    <% end %>
+</div>
