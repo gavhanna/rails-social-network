@@ -7,6 +7,8 @@
         <li><%= link_to '<i class="material-icons">home</i>'.html_safe, root_path,
                 data: {position: "bottom", tooltip: "Home"}, :class => "tooltipped" %></li>
         <% if user_signed_in? %>
+        <li><%= link_to '<i class="material-icons">message</i>'.html_safe, 
+                  posts_path, data: {position: "bottom", tooltip: "Posts"}, :class => "tooltipped" %></li>
           <li><%= link_to '<i class="material-icons">account_circle</i>'.html_safe, 
                   profile_path, data: {position: "bottom", tooltip: "Profile"}, :class => "tooltipped" %></li>
           <li><%= link_to '<i class="material-icons">settings</i>'.html_safe,edit_user_registration_path,

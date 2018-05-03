@@ -1,0 +1,32 @@
+<%= form_with(model: post, local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :posted_at %>
+    <%= form.datetime_select :posted_at, id: :post_posted_at %>
+  </div>
+
+  <div class="field" style="display: none;">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :post_user_id, :value => current_user.id, :readonly => true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, id: :post_content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Submit", :class => "waves-effect waves-light btn", :style => "color: white"  %>
+  </div>
+<% end %>
