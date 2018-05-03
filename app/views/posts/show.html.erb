@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <%= render 'posts/newPostButton' %>
+<% @comCount = 0 %>
+<% @comments.each do |comment| %>
+  <% if comment.post_id == @post.id %>
+    <% @comCount += 1 %>
+  <% end %>
+<% end %>
 
 <div class="center-align">
 
@@ -22,7 +28,7 @@
           </div>
           <div class="card-action post-details">
             <div class="left">
-              <p><%= time_ago_in_words(@post.created_at) %> ago <br><%= @comments.length %> comments</p>
+              <p><%= time_ago_in_words(@post.created_at) %> ago <br><%= @comCount%> comments</p>
             </div>
             <div class="right">
               <%= link_to 'Show', @post %>
