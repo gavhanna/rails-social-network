@@ -13,5 +13,6 @@ class ProfileController < ApplicationController
     
     @userPosts = Post.where("user_id = ?", @user.id)
     @userComments = Comment.where("user_id = ?", @user.id)
+    @currentUser = current_user
   end
 end
