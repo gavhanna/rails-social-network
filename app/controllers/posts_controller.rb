@@ -7,6 +7,7 @@ class PostsController < ApplicationController
     @posts = Post.all
     @comment = Comment.new
     @comments = Comment.all
+    @currentUser = current_user
   end
 
   # GET /posts/1
